@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -34,9 +35,12 @@ public class SelenideTest {
     @Test
     void shouldTest () {
         open("http://localhost:9999/");
-        String date = getLocalDate(3);
+        String date = getLocalDate(6);
         $("[data-test-id ='city'] input").setValue("Москва");
         $("[data-test-id ='date'] input").setValue(date);
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
+        $("[data-test-id='date'] input").setValue(date);
+
         $("[data-test-id ='name'] input").setValue("Яна Петрова");
         $("[data-test-id ='phone'] input").setValue("+79999999999");
         $("[data-test-id ='agreement']").click();
