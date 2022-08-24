@@ -31,7 +31,6 @@ public class SelenideTest {
         holdBrowserOpen = true;
     }
 
-
     @Test
     void shouldTest () {
         open("http://localhost:9999/");
@@ -45,6 +44,5 @@ public class SelenideTest {
         $("[data-test-id=notification]").shouldBe(visible, Duration.ofSeconds(15));
         $("[data-test-id=notification]").$x(".//div[@class='notification__title']").should(text("Успешно!"));
         $("[data-test-id=notification]").$x(".//div[@class='notification__content']").should(text("Встреча успешно забронирована на " + date));
-
     }
 }
